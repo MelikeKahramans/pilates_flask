@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container mt-4" style="margin-left: 260px;">
+        <h1>{{ category.name }}</h1>
+        <ul class="links">
+            {% for link in links %}
+                <li><a href="{{ link.url }}" target="iframe">{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+        <div class="iframe-container">
+            <iframe name="iframe" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+</html>

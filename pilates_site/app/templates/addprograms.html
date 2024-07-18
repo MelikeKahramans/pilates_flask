@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Haftalık Program Ekle</h2>
+    <form action="{{ url_for('routes.add_program') }}" method="post">
+        <div class="mb-3">
+            <label for="programName" class="form-label">Program Adı</label>
+            <input type="text" class="form-control" id="programName" name="programName" required>
+        </div>
+        <div class="mb-3">
+            <label for="programDescription" class="form-label">Program Açıklaması</label>
+            <textarea class="form-control" id="programDescription" name="programDescription" rows="3"></textarea>
+        </div>
+        <h3>Günlere Göre Videolar</h3>
+        {% for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
+        <div class="mb-3">
+            <label for="link-{{ day }}" class="form-label">{{ day }}</label>
+            <select class="form-select" id="link-{{ day }}" name="link-{{ day }}">
+                <option value="">Seçiniz</option>
+                {% for link in category_links %}
+                <option value="{{ link.id }}">{{ link.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endfor %}
+        
+        <button type="submit" class="btn btn-primary">Ekle</button>
+    </form>
+</div>
+{% endblock %}

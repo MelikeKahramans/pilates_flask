@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Haftalık Programlarım</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Gün</th>
+                <th>Ders</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for program in weekly_programs %}
+            <tr>
+                <td>{{ program['day'] }}</td>
+                <td>{{ program['lesson'] }}</td>
+                <td><a href="{{ program['link'] }}" target="_blank">Video Link</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
